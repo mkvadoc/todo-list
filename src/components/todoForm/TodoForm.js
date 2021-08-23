@@ -1,32 +1,35 @@
+import Todo from "components/todo/Todo";
 import React, { useState } from "react";
 
-const TodoForm = () => {
-  const [todos, setTodos] = useState([]);
-  const [todo, setTodo] = useState("");
+const TodoForm = ({ addTodo }) => {
+  const [todo, setTodo] = useState({
+    id: "",
+    task: "",
+    completed: false,
+  });
+
+  const handleTaskInputChange = (e) => {
+    setTodo({ ...todo, task: e.target.value });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    const newTodo = {
-      id: Math.floor(Math.random() * 10000),
-      text: todo,
-      completed: false,
-    };
-    setTodos([...todos].concat(newTodo));
-    setTodo("");
+    if (todo.task.trim()) {
+      addTodo({ ...todo, id: Math.floor(Math.random() * 10000) });
+      setTodo({ ...Todo, task: "" });
+    }
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          onChange={(e) => setTodo(e.target.value)}
-          value={todo}
-        />
-        <button type="submit"> ADD </button>
-      </form>
-    </div>
+    <form onSubmit={handleSubmit}>
+      <input
+        name="task"
+        type="text"
+        onChange={handleTaskInputChange}
+        value={todo.task}
+      />
+      <button type="submit"> ADD </button>
+    </form>
   );
 };
 
