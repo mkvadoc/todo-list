@@ -13,9 +13,9 @@ const Todo = ({ todo, toggleComplete, removeTodo }) => {
   };
 
   return (
-    <div>
+    <div className="todo">
       <input
-        className="checkComp"
+        className="checkbox"
         type="checkbox"
         defaultChecked={false}
         onClick={handleCheckboxClick}

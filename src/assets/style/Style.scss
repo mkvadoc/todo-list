@@ -1,5 +1,21 @@
 @import "components/allComponents.scss";
+
 body {
   display: flex;
   justify-content: center;
+  background-color: #26A39B;
+}
+
+a,
+p,
+h1,
+h2,
+h3 {
+  color: red;
+}
+
+button {
+  border: none;
+  background-color: burlywood;
+  border-radius: 4px;
 }
